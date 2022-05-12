@@ -2,27 +2,54 @@ package com.applid.gym.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.applid.gym.R
+
+
+private val OpenSansRegular = FontFamily(
+    Font(R.font.open_sans)
+)
+private val OpenSansBold = FontFamily(
+    Font(R.font.open_sans_bold)
+)
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-        body1 = TextStyle(
-                fontFamily = FontFamily.Default,
-                fontWeight = FontWeight.Normal,
-                fontSize = 16.sp
-        )
-        /* Other default text styles to override
-    button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W500,
-        fontSize = 14.sp
+    h1 = TextStyle(
+        fontFamily = OpenSansBold,
+        fontSize = 21.sp,
     ),
-    caption = TextStyle(
-        fontFamily = FontFamily.Default,
+    //For list items and textFields
+    h3 = TextStyle(
+        fontFamily = OpenSansRegular,
+        fontSize = 16.sp,
         fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
-    )
-    */
+    ),
+    body1 = TextStyle(
+        fontFamily = OpenSansRegular,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Normal,
+    ),
+    //For dialog content
+    body2 = TextStyle(
+      fontFamily = OpenSansRegular,
+      fontSize = 16.sp,
+        fontWeight = FontWeight.Normal,
+    ),
+    //For menu title
+    subtitle1 = TextStyle(
+        fontFamily = OpenSansRegular,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+    ),
+    button = TextStyle(
+        fontFamily = OpenSansRegular,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Medium,
+    ),
+
+
 )
