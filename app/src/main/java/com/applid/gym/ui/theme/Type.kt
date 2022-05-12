@@ -1,6 +1,7 @@
 package com.applid.gym.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -12,14 +13,12 @@ import com.applid.gym.R
 private val OpenSansRegular = FontFamily(
     Font(R.font.open_sans)
 )
-private val OpenSansBold = FontFamily(
-    Font(R.font.open_sans_bold)
-)
 
 // Set of Material typography styles to start with
 val Typography = Typography(
     h1 = TextStyle(
-        fontFamily = OpenSansBold,
+        fontFamily = OpenSansRegular,
+        fontWeight = FontWeight.Bold,
         fontSize = 21.sp,
     ),
     //For list items and textFields
