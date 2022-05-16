@@ -46,9 +46,9 @@ class MainActivity : ComponentActivity() {
                             BottomNavigationBar(
                                 items = listOf(
                                     BottomNavItem(
-                                        name = "Home",
-                                        route = "home",
-                                        icon = R.drawable.bottom_nav_home_icon
+                                        name = "QR scan",
+                                        route = "qrscan",
+                                        icon = R.drawable.bottom_nav_qr_icon,
                                     ),
                                     BottomNavItem(
                                         name = "Leaderboard",
@@ -56,9 +56,9 @@ class MainActivity : ComponentActivity() {
                                         icon = R.drawable.bottom_nav_leaderboard_icon
                                     ),
                                     BottomNavItem(
-                                        name = "Settings",
-                                        route = "settings",
-                                        icon = R.drawable.bottom_nav_settings_icon,
+                                        name = "Home",
+                                        route = "home",
+                                        icon = R.drawable.bottom_nav_home_icon
                                     ),
                                     BottomNavItem(
                                         name = "Profile",
@@ -66,9 +66,9 @@ class MainActivity : ComponentActivity() {
                                         icon = R.drawable.bottom_nav_profile_icon,
                                     ),
                                     BottomNavItem(
-                                        name = "QR scan",
-                                        route = "qrscan",
-                                        icon = R.drawable.bottom_nav_qr_icon,
+                                        name = "Settings",
+                                        route = "settings",
+                                        icon = R.drawable.bottom_nav_settings_icon,
                                     ),
                                 ),
                                 navController = navController,
