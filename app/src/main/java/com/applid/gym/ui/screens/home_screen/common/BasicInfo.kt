@@ -14,9 +14,14 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import com.applid.gym.R
+import com.applid.gym.ui.common.AutoSizeText
 
-@Preview
+
 @Composable
 fun BasicInfo() {
 
@@ -38,7 +43,9 @@ fun BasicInfo() {
                 modifier = Modifier.padding(vertical = 20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Row() {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Image(
                         painterResource(R.drawable.trophy_icon),
                         contentDescription = "",
@@ -51,7 +58,12 @@ fun BasicInfo() {
                 Spacer(modifier = Modifier.height(25.dp))
                 Text("12", style = MaterialTheme.typography.h1, fontSize = 40.sp)
                 Spacer(modifier = Modifier.height(10.dp))
-                Text("Attempted workouts", style = MaterialTheme.typography.subtitle1, fontSize = 16.sp)
+                AutoSizeText(text = "Attempted workouts", textStyle = TextStyle(
+                    fontFamily = FontFamily(Font(R.font.open_sans)),
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 16.sp,)
+                )
+                        //Text("Attempted workouts", style = MaterialTheme.typography.subtitle1, fontSize = 16.sp)
             }
         }
         Column(

@@ -6,8 +6,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.applid.gym.R
+import com.applid.gym.domain.models.DiscoverWorkout
 import com.applid.gym.ui.screens.home_screen.common.BasicInfo
+import com.applid.gym.ui.screens.home_screen.common.DiscoverWorkouts
 
 @Composable
 fun HomeScreen() {
@@ -19,5 +23,14 @@ fun HomeScreen() {
         HomeAppBar(mainTxt = "MainTxt", descriptionTxt = "DescriptionTxt")
         Spacer(modifier = Modifier.height(20.dp))
         BasicInfo()
+        Spacer(modifier = Modifier.height(20.dp))
+        DiscoverWorkouts(List(20){
+            DiscoverWorkout(
+                title = "Title",
+                description = "Description",
+                backgroundColor = Color.Blue,
+                image = R.drawable.trophy_icon
+            )
+        })
     }
 }
