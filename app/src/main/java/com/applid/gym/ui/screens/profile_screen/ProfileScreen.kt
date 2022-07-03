@@ -12,6 +12,7 @@ import com.applid.gym.R
 import com.applid.gym.domain.models.profile.Achievement
 import com.applid.gym.ui.screens.profile_screen.common.AppBar
 import com.applid.gym.ui.screens.profile_screen.common.BasicInfo
+import com.applid.gym.ui.screens.profile_screen.common.WeightGraph
 import com.applid.gym.ui.screens.profile_screen.common.achievements.Achievements
 
 @Composable
@@ -28,5 +29,7 @@ fun ProfileScreen() {
         BasicInfo()
         Spacer(modifier = Modifier.height(15.dp))
         Achievements(achievement = achievements)
+        Spacer(modifier = Modifier.height(15.dp))
+        WeightGraph()
     }
 }
