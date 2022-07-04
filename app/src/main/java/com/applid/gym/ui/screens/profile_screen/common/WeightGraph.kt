@@ -1,5 +1,6 @@
 package com.applid.gym.ui.screens.profile_screen.common
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -33,9 +34,11 @@ fun WeightGraph() {
                         LinePlot.Highlight(color = Color.Yellow),
                     )
                 ),
-                grid = LinePlot.Grid(Color.Red, steps = 4),
+                grid = LinePlot.Grid(Color.Transparent, steps = 4),
             ),
-            modifier = Modifier.fillMaxWidth().height(200.dp),
+            modifier = Modifier.fillMaxWidth()
+                .height(200.dp),
+            
             onSelection = { xLine, points ->
                 // Do whatever you want here
             }
