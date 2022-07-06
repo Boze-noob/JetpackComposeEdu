@@ -14,7 +14,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.applid.gym.domain.models.DiscoverWorkout
+import com.applid.gym.domain.models.home.DiscoverWorkout
 import com.applid.gym.ui.helpers.ScreenSize
 
 

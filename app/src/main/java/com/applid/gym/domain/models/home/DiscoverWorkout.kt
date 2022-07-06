@@ -1,4 +1,4 @@
-package com.applid.gym.domain.models
+package com.applid.gym.domain.models.home
 
 import androidx.compose.ui.graphics.Color
 import android.media.Image
