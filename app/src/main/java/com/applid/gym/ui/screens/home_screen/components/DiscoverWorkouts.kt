@@ -1,4 +1,4 @@
-package com.applid.gym.ui.screens.home_screen.common
+package com.applid.gym.ui.screens.home_screen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

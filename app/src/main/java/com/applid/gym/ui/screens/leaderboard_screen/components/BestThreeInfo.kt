@@ -1,4 +1,4 @@
-package com.applid.gym.ui.screens.leaderboard_screen.common
+package com.applid.gym.ui.screens.leaderboard_screen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

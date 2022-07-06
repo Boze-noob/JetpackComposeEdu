@@ -1,4 +1,4 @@
-package com.applid.gym.ui.screens.profile_screen.common
+package com.applid.gym.ui.screens.profile_screen.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape

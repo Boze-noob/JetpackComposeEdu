@@ -1,14 +1,11 @@
-package com.applid.gym.ui.screens.profile_screen.common.achievements
+package com.applid.gym.ui.screens.profile_screen.components.achievements
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.applid.gym.domain.models.profile.Achievement
 
 
 @Composable

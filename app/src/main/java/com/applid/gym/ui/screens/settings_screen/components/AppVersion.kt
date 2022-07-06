@@ -1,4 +1,4 @@
-package com.applid.gym.ui.screens.settings_screen.common
+package com.applid.gym.ui.screens.settings_screen.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

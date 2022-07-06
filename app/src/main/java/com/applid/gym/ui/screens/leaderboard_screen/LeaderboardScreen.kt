@@ -4,8 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -13,10 +11,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.applid.gym.R
-import com.applid.gym.ui.screens.leaderboard_screen.common.AppBar
-import com.applid.gym.ui.screens.leaderboard_screen.common.BestThreeInfo
-import com.applid.gym.ui.screens.leaderboard_screen.common.HorizontalExerciseList
-import com.applid.gym.ui.screens.leaderboard_screen.common.LeaderboardItem
+import com.applid.gym.ui.screens.leaderboard_screen.components.AppBar
+import com.applid.gym.ui.screens.leaderboard_screen.components.BestThreeInfo
+import com.applid.gym.ui.screens.leaderboard_screen.components.HorizontalExerciseList
+import com.applid.gym.ui.screens.leaderboard_screen.components.LeaderboardItem
 
 @Composable
 fun LeaderboardScreen() {

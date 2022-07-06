@@ -10,9 +10,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.applid.gym.R
 import com.applid.gym.domain.models.DiscoverWorkout
-import com.applid.gym.ui.screens.home_screen.common.BasicInfo
-import com.applid.gym.ui.screens.home_screen.common.DiscoverWorkouts
-import com.applid.gym.ui.screens.home_screen.common.MotivationQuote
+import com.applid.gym.ui.screens.home_screen.components.BasicInfo
+import com.applid.gym.ui.screens.home_screen.components.DiscoverWorkouts
+import com.applid.gym.ui.screens.home_screen.components.MotivationQuote
 
 @Composable
 fun HomeScreen() {

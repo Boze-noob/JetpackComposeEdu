@@ -1,4 +1,4 @@
-package com.applid.gym.ui.screens.profile_screen.common.achievements
+package com.applid.gym.ui.screens.profile_screen.components.achievements
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -6,7 +6,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment

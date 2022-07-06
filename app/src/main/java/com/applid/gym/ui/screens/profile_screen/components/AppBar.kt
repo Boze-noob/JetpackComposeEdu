@@ -1,4 +1,4 @@
-package com.applid.gym.ui.screens.profile_screen.common
+package com.applid.gym.ui.screens.profile_screen.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image

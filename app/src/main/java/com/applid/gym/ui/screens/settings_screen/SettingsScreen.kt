@@ -7,10 +7,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.applid.gym.ui.screens.settings_screen.common.AppSettings
-import com.applid.gym.ui.screens.settings_screen.common.AppVersion
-import com.applid.gym.ui.screens.settings_screen.common.Notifications
-import com.applid.gym.ui.screens.settings_screen.common.Other
+import com.applid.gym.ui.screens.settings_screen.components.AppSettings
+import com.applid.gym.ui.screens.settings_screen.components.AppVersion
+import com.applid.gym.ui.screens.settings_screen.components.Notifications
+import com.applid.gym.ui.screens.settings_screen.components.Other
 
 
 @Composable
