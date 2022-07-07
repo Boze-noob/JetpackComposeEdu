@@ -15,13 +15,13 @@ class GetBasicInfoUseCase @Inject constructor(
 ){
     operator fun invoke(userID : String) : Flow<Resource<BasicInfo>> = flow {
         try {
-            emit(Resource.Loading())
+            emit(Resource.Loading<BasicInfo>())
             val basicInfo = homeRepository.getBasicInfo(userID = userID).toBasicInfo()
-            emit(Resource.Success(basicInfo))
+            emit(Resource.Success<BasicInfo>(basicInfo))
         } catch (e : HttpException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error happen, try again later"))
+            emit(Resource.Error<BasicInfo>(message = e.localizedMessage ?: "An unexpected error happen, try again later"))
         } catch (e : IOException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "Error happen, check your internet connection"))
+            emit(Resource.Error<BasicInfo>(message = e.localizedMessage ?: "Error happen, check your internet connection"))
         }
     }
 }

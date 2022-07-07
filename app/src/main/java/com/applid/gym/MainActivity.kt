@@ -22,6 +22,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.applid.gym.ui.Router
 import com.applid.gym.ui.common.BottomNavItem
 import com.applid.gym.ui.screens.home_screen.HomeScreen
 import com.applid.gym.ui.screens.leaderboard_screen.LeaderboardScreen
@@ -29,7 +30,9 @@ import com.applid.gym.ui.screens.profile_screen.ProfileScreen
 import com.applid.gym.ui.screens.qr_scan_screen.QrScanScreen
 import com.applid.gym.ui.screens.settings_screen.SettingsScreen
 import com.applid.gym.ui.theme.GymTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,20 +86,20 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Navigation(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") {
+    NavHost(navController = navController, startDestination = Router.HomeScreen.route) {
+        composable(Router.HomeScreen.route) {
             HomeScreen()
         }
-        composable("leaderboard") {
+        composable(Router.LeaderboardScreen.route) {
             LeaderboardScreen()
         }
-        composable("settings") {
+        composable(Router.SettingsScreen.route) {
             SettingsScreen()
         }
-        composable("profile") {
+        composable(Router.ProfileScreen.route) {
             ProfileScreen()
         }
-        composable("qrscan") {
+        composable(Router.QrScanScreen.route) {
             QrScanScreen(navController)
         }
     }
@@ -108,7 +111,6 @@ fun Navigation(navController: NavHostController) {
 fun BottomNavigationBar(
     items: List<BottomNavItem>,
     navController: NavController,
-    modifier: Modifier = Modifier,
     onItemClick: (BottomNavItem) -> Unit
 ) {
     val backStackEntry = navController.currentBackStackEntryAsState()
