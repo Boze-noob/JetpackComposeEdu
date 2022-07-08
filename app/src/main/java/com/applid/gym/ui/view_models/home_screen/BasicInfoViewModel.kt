@@ -23,6 +23,15 @@ class BasicInfoViewModel @Inject constructor(
     private val _state = mutableStateOf(BasicInfoState())
     val state : State<BasicInfoState> = _state
 
+    fun onEvent(event : BasicInfoEvent){
+        when(event) {
+            is BasicInfoEvent.Init -> {
+                getBasicInfo(event.userID)
+            }
+        }
+    }
+
+    //TODO delete this if fun onEvent works properly
     init {
         savedStateHandle.get<String>(Constants.PARAM_USER_ID)?.let { userID ->
             getBasicInfo(userID = userID)

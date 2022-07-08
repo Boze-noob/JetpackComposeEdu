@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.applid.gym.R
 import com.applid.gym.ui.common.AutoSizeText
+import com.applid.gym.ui.view_models.home_screen.BasicInfoEvent
 import com.applid.gym.ui.view_models.home_screen.BasicInfoViewModel
 
 
@@ -32,6 +33,7 @@ fun BasicInfo(
 ) {
     val state = viewModel.state.value
     val basicInfoNullFlag = state.basicInfo == null
+    viewModel.onEvent(BasicInfoEvent.Init("someID"))
 
     Box(modifier = Modifier.fillMaxSize()) {
         Row(
