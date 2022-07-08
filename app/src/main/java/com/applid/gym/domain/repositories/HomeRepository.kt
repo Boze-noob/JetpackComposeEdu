@@ -6,6 +6,6 @@ import com.applid.gym.domain.models.home.BasicInfo
 //Good to have for testing purposes
 interface HomeRepository {
 
-    suspend fun getBasicInfo(userID : String) : BasicInfoDto
+    suspend fun getBasicInfo(subscriptionID : Int) : BasicInfoDto
 
 }

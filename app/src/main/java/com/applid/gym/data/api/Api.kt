@@ -6,6 +6,6 @@ import retrofit2.http.Path
 
 interface Api {
 
-    @GET("/homeBasicInfo/{userId}")
-    suspend fun getHomeBasicInfo(@Path("userId") userId: String): BasicInfoDto
+    @GET("home/get/basicInfo/{subscriptionID}")
+    suspend fun getHomeBasicInfo(@Path("subscriptionID") subscriptionID: Int): BasicInfoDto
 }

@@ -1,5 +1,6 @@
-package com.applid.gym.ui.view_models.home_screen
+package com.applid.gym.ui.view_models.home
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -10,7 +11,6 @@ import com.applid.gym.common.Resource
 import com.applid.gym.domain.use_cases.home.GetBasicInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import com.applid.gym.ui.view_models.home_screen.BasicInfoState
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -26,20 +26,20 @@ class BasicInfoViewModel @Inject constructor(
     fun onEvent(event : BasicInfoEvent){
         when(event) {
             is BasicInfoEvent.Init -> {
-                getBasicInfo(event.userID)
+                getBasicInfo(event.subscriptionID)
             }
         }
     }
 
     //TODO delete this if fun onEvent works properly
     init {
-        savedStateHandle.get<String>(Constants.PARAM_USER_ID)?.let { userID ->
-            getBasicInfo(userID = userID)
+        savedStateHandle.get<Int>(Constants.PARAM_SUBSCRIPTION_ID)?.let { subscriptionID ->
+            getBasicInfo(subscriptionID = subscriptionID)
         }
     }
 
-    private fun getBasicInfo(userID : String) {
-        getBasicInfoUseCase(userID = userID).onEach { result ->
+    private fun getBasicInfo(subscriptionID : Int) {
+        getBasicInfoUseCase(subscriptionID = subscriptionID).onEach { result ->
             when(result) {
                 is Resource.Success -> {
                     _state.value = BasicInfoState(basicInfo = result.data)

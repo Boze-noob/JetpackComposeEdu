@@ -8,14 +8,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.applid.gym.R
 import com.applid.gym.domain.models.home.DiscoverWorkout
 import com.applid.gym.ui.screens.home_screen.components.BasicInfo
 import com.applid.gym.ui.screens.home_screen.components.DiscoverWorkouts
 import com.applid.gym.ui.screens.home_screen.components.MotivationQuote
+import com.applid.gym.ui.view_models.home.BasicInfoEvent
+import com.applid.gym.ui.view_models.home.BasicInfoViewModel
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    viewModel : BasicInfoViewModel = hiltViewModel()
+) {
+    viewModel.onEvent(BasicInfoEvent.Init(1))
+
     Column(
         modifier = Modifier
             .fillMaxSize()
