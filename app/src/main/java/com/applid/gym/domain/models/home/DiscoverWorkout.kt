@@ -5,7 +5,8 @@ import android.media.Image
 
 data class DiscoverWorkout(
     val title: String,
-    val description : String,
+    val numOfExercises : String,
+    val time : String,
     val backgroundColor : Color,
     val image : Int,
     )

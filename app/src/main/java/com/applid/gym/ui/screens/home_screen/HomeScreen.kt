@@ -35,7 +35,8 @@ fun HomeScreen(
         DiscoverWorkouts(List(20){
             DiscoverWorkout(
                 title = "Title",
-                description = "Description",
+                numOfExercises = "10 exercises",
+                time = "10 minutes",
                 backgroundColor = Color.Blue,
                 image = R.drawable.trophy_icon
             )

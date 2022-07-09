@@ -50,7 +50,12 @@ fun DiscoverWorkouts(discoverWorkoutList: List<DiscoverWorkout>){
                             )
                             Spacer(modifier = Modifier.height(20.dp))
                             Text(
-                                text = discoverWorkout.description,
+                                text = discoverWorkout.numOfExercises,
+                                style = MaterialTheme.typography.subtitle1
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = discoverWorkout.time,
                                 style = MaterialTheme.typography.subtitle1
                             )
                         }
