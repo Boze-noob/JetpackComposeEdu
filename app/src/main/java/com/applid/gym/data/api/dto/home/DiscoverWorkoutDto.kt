@@ -4,20 +4,20 @@ import androidx.compose.ui.graphics.Color
 import com.applid.gym.domain.models.home.DiscoverWorkout
 
 data class DiscoverWorkoutDto(
-    val title : String,
-    val numOfExercises : String,
-    val time : String,
-    val backgroundColor : Color,
-    val image : String,
+    val Title : String,
+    val Num_of_exercises : String,
+    val Time : String,
+    val Background_color : String,
+    val Image : String,
 )
 
 fun DiscoverWorkoutDto.toDiscoverWorkout() : DiscoverWorkout{
     return DiscoverWorkout(
-        title = title,
-        numOfExercises = numOfExercises,
-        time = time,
-        backgroundColor = backgroundColor,
-        image = image
+        title = Title,
+        numOfExercises = Num_of_exercises,
+        time = Time,
+        backgroundColor = Background_color,
+        image = Image
     )
 }
 

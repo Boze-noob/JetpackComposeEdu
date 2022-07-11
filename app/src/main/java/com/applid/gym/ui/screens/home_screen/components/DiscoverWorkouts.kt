@@ -16,6 +16,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.core.graphics.toColorInt
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.applid.gym.domain.models.home.DiscoverWorkout
@@ -67,7 +68,7 @@ fun List(discoverWorkoutList: List<DiscoverWorkout>, isLoading: Boolean) {
                 Card(
                     shape = RoundedCornerShape(20.dp),
                     elevation = 2.dp,
-                    backgroundColor = discoverWorkout.backgroundColor,
+                    backgroundColor = Color(discoverWorkout.backgroundColor.toColorInt()),
                     modifier = Modifier
                         .padding(horizontal = 20.dp, vertical = 5.dp)
                         .width((screenWidth / 1.4).dp),
