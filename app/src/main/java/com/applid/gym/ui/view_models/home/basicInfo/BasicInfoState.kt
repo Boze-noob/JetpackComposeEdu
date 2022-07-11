@@ -1,4 +1,4 @@
-package com.applid.gym.ui.view_models.home
+package com.applid.gym.ui.view_models.home.basicInfo
 
 import com.applid.gym.domain.models.home.BasicInfo
 

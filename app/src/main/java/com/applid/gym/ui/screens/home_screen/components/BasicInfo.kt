@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
 import androidx.compose.material.*
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -20,8 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.applid.gym.R
 import com.applid.gym.ui.common.AutoSizeText
-import com.applid.gym.ui.view_models.home.BasicInfoEvent
-import com.applid.gym.ui.view_models.home.BasicInfoViewModel
+import com.applid.gym.ui.view_models.home.basicInfo.BasicInfoViewModel
 
 
 @Composable
@@ -32,52 +32,16 @@ fun BasicInfo(
     val basicInfoNullFlag = state.basicInfo == null
 
     Box(modifier = Modifier.fillMaxSize()) {
-        Row(
-            modifier = Modifier
-                .padding(horizontal = 25.dp)
-                .height(200.dp)
-        ) {
-            Card(
-                shape = RoundedCornerShape(10.dp),
-                elevation = 2.dp,
-                backgroundColor = MaterialTheme.colors.primaryVariant,
+        if(state.isLoading) {
+            CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.Center),
+                color = Color.Red
+            )
+        } else {
+            Row(
                 modifier = Modifier
-                    .weight(1f)
-                    .padding(horizontal = 10.dp, vertical = 5.dp),
-
-                ) {
-                Column(
-                    modifier = Modifier.padding(vertical = 20.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Image(
-                            painterResource(R.drawable.trophy_icon),
-                            contentDescription = "",
-                            contentScale = ContentScale.Fit,
-                            modifier = Modifier.size(40.dp, 40.dp)
-                        )
-                        Spacer(modifier = Modifier.width(5.dp))
-                        Text("Completed", style = MaterialTheme.typography.subtitle1, fontSize = 16.sp)
-                    }
-                    Spacer(modifier = Modifier.height(25.dp))
-                    Text(
-                        if(!basicInfoNullFlag) state.basicInfo?.completedWorkouts.toString() else " ",
-                        style = MaterialTheme.typography.h1,
-                        fontSize = 40.sp
-                    )
-                    Spacer(modifier = Modifier.height(10.dp))
-                    AutoSizeText(text = "Attempted workouts", textStyle = TextStyle(
-                        fontFamily = FontFamily(Font(R.font.open_sans)),
-                        fontWeight = FontWeight.Medium,
-                        fontSize = 16.sp,)
-                    )
-                }
-            }
-            Column(
-                modifier = Modifier.weight(1f),
+                    .padding(horizontal = 25.dp)
+                    .height(200.dp)
             ) {
                 Card(
                     shape = RoundedCornerShape(10.dp),
@@ -85,78 +49,115 @@ fun BasicInfo(
                     backgroundColor = MaterialTheme.colors.primaryVariant,
                     modifier = Modifier
                         .weight(1f)
-                        .fillMaxSize()
-                        .padding(vertical = 5.dp),
-                ) {
-                    Column(
-                        modifier = Modifier.padding(horizontal = 15.dp),
-                        verticalArrangement = Arrangement.Center,
+                        .padding(horizontal = 10.dp, vertical = 5.dp),
+
                     ) {
-                        Row() {
+                    Column(
+                        modifier = Modifier.padding(vertical = 20.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
                             Image(
-                                painterResource(R.drawable.schedule_icon),
+                                painterResource(R.drawable.trophy_icon),
                                 contentDescription = "",
                                 contentScale = ContentScale.Fit,
                                 modifier = Modifier.size(40.dp, 40.dp)
-
                             )
                             Spacer(modifier = Modifier.width(5.dp))
-                            Text(text = "Workouts \nleft", style = MaterialTheme.typography.subtitle1, fontSize = 16.sp)
+                            Text("Completed", style = MaterialTheme.typography.subtitle1, fontSize = 16.sp)
                         }
-
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Row(
-                            verticalAlignment = Alignment.Bottom
-                        ) {
-                            Text(text = if(!basicInfoNullFlag) state.basicInfo?.daysLeft.toString() else " ", style = MaterialTheme.typography.subtitle1, fontSize = 20.sp)
-                            Spacer(modifier = Modifier.width(15.dp))
-                            Text(text = "Workouts")
-                        }
+                        Spacer(modifier = Modifier.height(25.dp))
+                        Text(
+                            if(!basicInfoNullFlag) state.basicInfo?.completedWorkouts.toString() else " ",
+                            style = MaterialTheme.typography.h1,
+                            fontSize = 40.sp
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        AutoSizeText(text = "Attempted workouts", textStyle = TextStyle(
+                            fontFamily = FontFamily(Font(R.font.open_sans)),
+                            fontWeight = FontWeight.Medium,
+                            fontSize = 16.sp,)
+                        )
                     }
-
                 }
-                Card(
-                    shape = RoundedCornerShape(10.dp),
-                    elevation = 2.dp,
-                    backgroundColor = MaterialTheme.colors.primaryVariant,
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxSize()
-                        .padding(vertical = 5.dp),
-
+                Column(
+                    modifier = Modifier.weight(1f),
+                ) {
+                    Card(
+                        shape = RoundedCornerShape(10.dp),
+                        elevation = 2.dp,
+                        backgroundColor = MaterialTheme.colors.primaryVariant,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxSize()
+                            .padding(vertical = 5.dp),
                     ) {
-                    Column(
-                        modifier = Modifier.padding(horizontal = 15.dp),
-                        verticalArrangement = Arrangement.Center,
-                    ) {
-                        Row() {
-                            Image(
-                                painterResource(R.drawable.weight_icon),
-                                contentDescription = "",
-                                contentScale = ContentScale.Fit,
-                                modifier = Modifier.size(40.dp, 40.dp)
-
-                            )
-                            Spacer(modifier = Modifier.width(5.dp))
-                            Text(text = "Current weight", style = MaterialTheme.typography.subtitle1, fontSize = 16.sp)
-                        }
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Row(
-                            verticalAlignment = Alignment.Bottom
+                        Column(
+                            modifier = Modifier.padding(horizontal = 15.dp),
+                            verticalArrangement = Arrangement.Center,
                         ) {
-                            Text(text = if(!basicInfoNullFlag) state.basicInfo?.weight.toString() else " ", style = MaterialTheme.typography.h1, fontSize = 20.sp)
-                            Spacer(modifier = Modifier.width(15.dp))
-                            Text(text = "KG")
+                            Row() {
+                                Image(
+                                    painterResource(R.drawable.schedule_icon),
+                                    contentDescription = "",
+                                    contentScale = ContentScale.Fit,
+                                    modifier = Modifier.size(40.dp, 40.dp)
+
+                                )
+                                Spacer(modifier = Modifier.width(5.dp))
+                                Text(text = "Workouts \nleft", style = MaterialTheme.typography.subtitle1, fontSize = 16.sp)
+                            }
+
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Row(
+                                verticalAlignment = Alignment.Bottom
+                            ) {
+                                Text(text = if(!basicInfoNullFlag) state.basicInfo?.daysLeft.toString() else " ", style = MaterialTheme.typography.subtitle1, fontSize = 20.sp)
+                                Spacer(modifier = Modifier.width(15.dp))
+                                Text(text = "Workouts")
+                            }
+                        }
+
+                    }
+                    Card(
+                        shape = RoundedCornerShape(10.dp),
+                        elevation = 2.dp,
+                        backgroundColor = MaterialTheme.colors.primaryVariant,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxSize()
+                            .padding(vertical = 5.dp),
+
+                        ) {
+                        Column(
+                            modifier = Modifier.padding(horizontal = 15.dp),
+                            verticalArrangement = Arrangement.Center,
+                        ) {
+                            Row() {
+                                Image(
+                                    painterResource(R.drawable.weight_icon),
+                                    contentDescription = "",
+                                    contentScale = ContentScale.Fit,
+                                    modifier = Modifier.size(40.dp, 40.dp)
+
+                                )
+                                Spacer(modifier = Modifier.width(5.dp))
+                                Text(text = "Current weight", style = MaterialTheme.typography.subtitle1, fontSize = 16.sp)
+                            }
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Row(
+                                verticalAlignment = Alignment.Bottom
+                            ) {
+                                Text(text = if(!basicInfoNullFlag) state.basicInfo?.weight.toString() else " ", style = MaterialTheme.typography.h1, fontSize = 20.sp)
+                                Spacer(modifier = Modifier.width(15.dp))
+                                Text(text = "KG")
+                            }
                         }
                     }
                 }
             }
-        }
-
-        if(state.isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
-            )
         }
         if(state.error.isNotBlank()) {
             Toast.makeText(LocalContext.current, state.error, Toast.LENGTH_LONG).show()

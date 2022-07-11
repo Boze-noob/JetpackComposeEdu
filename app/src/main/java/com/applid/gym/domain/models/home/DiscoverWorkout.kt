@@ -8,5 +8,5 @@ data class DiscoverWorkout(
     val numOfExercises : String,
     val time : String,
     val backgroundColor : Color,
-    val image : Int,
+    val image : String,
     )

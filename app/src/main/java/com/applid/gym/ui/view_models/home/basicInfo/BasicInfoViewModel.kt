@@ -1,6 +1,5 @@
-package com.applid.gym.ui.view_models.home
+package com.applid.gym.ui.view_models.home.basicInfo
 
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -55,5 +54,4 @@ class BasicInfoViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
-
 }
