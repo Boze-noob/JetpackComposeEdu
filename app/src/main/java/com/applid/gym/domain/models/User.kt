@@ -4,5 +4,5 @@ data class User(
     val userName : String,
     val weight : Int,
     val address : String,
-    val completedWorkouts : Int
+    val completedWorkouts : Int? = null
 )

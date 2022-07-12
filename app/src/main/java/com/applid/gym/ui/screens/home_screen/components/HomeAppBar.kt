@@ -1,3 +1,4 @@
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -9,12 +10,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.applid.gym.R
+import com.applid.gym.common.Constants
+import com.applid.gym.ui.view_models.home.appBar.AppBarViewModel
+import com.applid.gym.ui.view_models.home.discoverWorkouts.DiscoverWorkoutsViewModel
 
 @Composable
-fun HomeAppBar(mainTxt : String, descriptionTxt : String) {
+fun HomeAppBar(
+    mainTxt: String,
+    descriptionTxt: String,
+    viewModel: AppBarViewModel = hiltViewModel()
+    ) {
+
+    val state = viewModel.state.value
 
     Column() {
         Row(
@@ -34,11 +48,19 @@ fun HomeAppBar(mainTxt : String, descriptionTxt : String) {
                 shape = CircleShape,
                 elevation = 2.dp,
             ) {
-                Image(
-                    painterResource(R.drawable.ic_launcher_foreground),
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(Constants.IMAGE_BASE_URL + state.webImageModel?.url)
+                        .crossfade(true)
+                        .build(),
                     contentDescription = "",
+                    placeholder = painterResource(R.drawable.default_profile_img),
+                    error = painterResource(id = R.drawable.default_profile_img),
                     contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
+                    onError = {
+                        Log.d("DiscoverWorkout", "Image loading error ${it.result.throwable}")
+                    },
+                    modifier = Modifier.fillMaxSize(),
                 )
             }
         }

@@ -68,7 +68,7 @@ fun List(discoverWorkoutList: List<DiscoverWorkout>, isLoading: Boolean) {
         LazyRow {
             items(discoverWorkoutList) { discoverWorkout ->
                 Card(
-                    shape = RoundedCornerShape(20.dp),
+                    shape = RoundedCornerShape(30.dp),
                     elevation = 2.dp,
                     backgroundColor = Color(discoverWorkout.backgroundColor.toColorInt()),
                     modifier = Modifier
@@ -105,7 +105,7 @@ fun List(discoverWorkoutList: List<DiscoverWorkout>, isLoading: Boolean) {
                             placeholder = painterResource(R.drawable.trophy_icon),
                             contentScale = ContentScale.Crop,
                             onError = {
-                                Log.d("DiscoverWorkout", "Image loading error ${it.result.throwable}");
+                                Log.d("DiscoverWorkout", "Image loading error ${it.result.throwable}")
                             },
                             modifier = Modifier
                                 .size((screenWidth / 1.8).dp, 100.dp)
