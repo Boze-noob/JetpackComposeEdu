@@ -1,6 +1,7 @@
 package com.applid.gym.ui.screens.home_screen.components
 
-import androidx.compose.foundation.Image
+import com.applid.gym.R
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -18,11 +19,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.rememberAsyncImagePainter
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import com.applid.gym.common.Constants
 import com.applid.gym.domain.models.home.DiscoverWorkout
 import com.applid.gym.ui.common.Loader
 import com.applid.gym.ui.helpers.ScreenSize
-import com.applid.gym.ui.view_models.home.basicInfo.BasicInfoViewModel
 import com.applid.gym.ui.view_models.home.discoverWorkouts.DiscoverWorkoutsViewModel
 
 
@@ -94,12 +96,20 @@ fun List(discoverWorkoutList: List<DiscoverWorkout>, isLoading: Boolean) {
                                 style = MaterialTheme.typography.subtitle1
                             )
                         }
-                        Image(
-                            painter = rememberAsyncImagePainter(discoverWorkout.image),
-                            contentDescription = null,
+                        AsyncImage(
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data(Constants.IMAGE_BASE_URL + discoverWorkout.image)
+                                .crossfade(true)
+                                .build(),
+                            contentDescription = "",
+                            placeholder = painterResource(R.drawable.trophy_icon),
+                            contentScale = ContentScale.Crop,
+                            onError = {
+                                Log.d("DiscoverWorkout", "Image loading error ${it.result.throwable}");
+                            },
                             modifier = Modifier
                                 .size((screenWidth / 1.8).dp, 100.dp)
-                                .weight(1F)
+                                .weight(1F),
                         )
                     }
                 }
@@ -107,4 +117,3 @@ fun List(discoverWorkoutList: List<DiscoverWorkout>, isLoading: Boolean) {
         }
     }
 }
-
