@@ -102,7 +102,6 @@ fun List(discoverWorkoutList: List<DiscoverWorkout>, isLoading: Boolean) {
                                 .crossfade(true)
                                 .build(),
                             contentDescription = "",
-                            placeholder = painterResource(R.drawable.trophy_icon),
                             contentScale = ContentScale.Crop,
                             onError = {
                                 Log.d("DiscoverWorkout", "Image loading error ${it.result.throwable}")
