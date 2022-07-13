@@ -20,6 +20,6 @@ class HomeRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getUser(userID : Int): UserDto {
-        return api.getUser()
+        return api.getUser(userID = userID)
     }
 }

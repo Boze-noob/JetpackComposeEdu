@@ -14,6 +14,6 @@ interface Api {
     @GET("home/get/discoverWorkout")
     suspend fun getDiscoverWorkouts() : List<DiscoverWorkoutDto>
 
-    @GET("get/user")
-    suspend fun getUser() : UserDto
+    @GET("user/get/{userID}")
+    suspend fun getUser(@Path("userID") userID: Int) : UserDto
 }
