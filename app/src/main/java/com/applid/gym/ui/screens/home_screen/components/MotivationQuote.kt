@@ -14,11 +14,21 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.applid.gym.R
 import com.applid.gym.ui.common.AutoSizeText
+import com.applid.gym.ui.view_models.home.userProgressPercentage.UserProgressPercentageState
+import com.applid.gym.ui.view_models.home.userProgressPercentage.UserProgressPercentageViewModel
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 @Composable
-fun MotivationQuote() {
+fun MotivationQuote(
+    viewModel: UserProgressPercentageViewModel = hiltViewModel()
+) {
+    val state = viewModel.state.value
+    val quote = getPercentage(state)
+
     Row() {
         Image(
             painterResource(R.drawable.trophy_icon),
@@ -40,11 +50,25 @@ fun MotivationQuote() {
             ))
             Spacer(modifier = Modifier.height(7.dp))
             Text(
-                text = "You are more successful than 80% of the users.",
+                text = quote,
                 color = Color.Black,
                 fontFamily = FontFamily(Font(R.font.open_sans)),
                 fontSize = 14.sp
             )
         }
     }
+}
+
+fun getPercentage(state : UserProgressPercentageState) : String {
+    val df = DecimalFormat("#.##")
+    df.roundingMode = RoundingMode.CEILING
+
+    if(state.userProgressPercentage != null){
+        if(state.userProgressPercentage.progressPercentage == 100.0)
+            return "You are better than all other users"
+        else if(state.userProgressPercentage.progressPercentage == 0.0)
+            return "You are at the bottom of a leaderboard. Work harder!"
+        else return "You are more successful than ${df.format(state.userProgressPercentage.progressPercentage)}% of the users."
+    }
+    else return "Slow progress is better than no progress!"
 }

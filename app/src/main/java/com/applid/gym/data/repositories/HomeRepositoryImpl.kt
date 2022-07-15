@@ -4,6 +4,7 @@ import com.applid.gym.data.api.Api
 import com.applid.gym.data.api.dto.UserDto
 import com.applid.gym.data.api.dto.home.BasicInfoDto
 import com.applid.gym.data.api.dto.home.DiscoverWorkoutDto
+import com.applid.gym.data.api.dto.home.UserProgressPercentageDto
 import com.applid.gym.domain.repositories.HomeRepository
 import javax.inject.Inject
 
@@ -21,5 +22,9 @@ class HomeRepositoryImpl @Inject constructor(
 
     override suspend fun getUser(userID : Int): UserDto {
         return api.getUser(userID = userID)
+    }
+
+    override suspend fun getUserProgressPercentage(exerciseID : Int) : UserProgressPercentageDto {
+        return api.getUserProgressPercentage(exerciseID = exerciseID)
     }
 }

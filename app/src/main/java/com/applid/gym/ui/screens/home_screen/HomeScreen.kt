@@ -17,16 +17,20 @@ import com.applid.gym.ui.view_models.home.basicInfo.BasicInfoEvent
 import com.applid.gym.ui.view_models.home.basicInfo.BasicInfoViewModel
 import com.applid.gym.ui.view_models.home.discoverWorkouts.DiscoverWorkoutsEvent
 import com.applid.gym.ui.view_models.home.discoverWorkouts.DiscoverWorkoutsViewModel
+import com.applid.gym.ui.view_models.home.userProgressPercentage.UserProgressPercentageEvent
+import com.applid.gym.ui.view_models.home.userProgressPercentage.UserProgressPercentageViewModel
 
 @Composable
 fun HomeScreen(
     basicInfoViewModel : BasicInfoViewModel = hiltViewModel(),
     discoverWorkoutsViewModel : DiscoverWorkoutsViewModel = hiltViewModel(),
     appBarViewModel: AppBarViewModel = hiltViewModel(),
+    userProgressPercentageViewModel: UserProgressPercentageViewModel = hiltViewModel(),
 ) {
     basicInfoViewModel.onEvent(BasicInfoEvent.Init(1))
     discoverWorkoutsViewModel.onEvent(DiscoverWorkoutsEvent.Init)
     appBarViewModel.onEvent(AppBarEvent.Init(1))
+    userProgressPercentageViewModel.onEvent(UserProgressPercentageEvent.Init(exerciseID = 2))
 
     Column(
         modifier = Modifier

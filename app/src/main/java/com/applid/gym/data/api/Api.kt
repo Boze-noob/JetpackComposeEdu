@@ -3,6 +3,7 @@ package com.applid.gym.data.api
 import com.applid.gym.data.api.dto.UserDto
 import com.applid.gym.data.api.dto.home.BasicInfoDto
 import com.applid.gym.data.api.dto.home.DiscoverWorkoutDto
+import com.applid.gym.data.api.dto.home.UserProgressPercentageDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -16,4 +17,7 @@ interface Api {
 
     @GET("user/get/{userID}")
     suspend fun getUser(@Path("userID") userID: Int) : UserDto
+
+    @GET("home/get/userProgress/{exerciseID}")
+    suspend fun getUserProgressPercentage(@Path("exerciseID") exerciseID : Int) : UserProgressPercentageDto
 }
