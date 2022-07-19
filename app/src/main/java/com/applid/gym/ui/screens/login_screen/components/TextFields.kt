@@ -69,7 +69,7 @@ fun TextFields() {
             )
             Spacer(modifier = Modifier.height(15.dp))
             ButtonWithIcon(
-                btnTxt = "Login",
+                btnTxt = "LOGIN",
                 onClickCallback = { },
                 modifier = Modifier.padding(horizontal = 15.dp, vertical = 7.dp),
                 )
