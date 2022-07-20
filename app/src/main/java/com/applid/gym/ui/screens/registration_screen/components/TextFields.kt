@@ -21,10 +21,7 @@ import com.applid.gym.ui.common.ButtonWithIcon
 
 @Composable
 fun TextFields() {
-
-
     Column {
-
         UserNameTextField()
         Spacer(modifier = Modifier.height(10.dp))
         EmailTextField()
