@@ -4,6 +4,7 @@ import com.applid.gym.data.api.dto.UserDto
 import com.applid.gym.data.api.dto.home.BasicInfoDto
 import com.applid.gym.data.api.dto.home.DiscoverWorkoutDto
 import com.applid.gym.data.api.dto.home.UserProgressPercentageDto
+import com.applid.gym.domain.models.sign_up.SignUpModel
 
 //Good to have for testing purposes
 interface HomeRepository {
@@ -12,5 +13,4 @@ interface HomeRepository {
     suspend fun getDiscoverWorkouts() : List<DiscoverWorkoutDto>
     suspend fun getUser(userID : Int) : UserDto
     suspend fun getUserProgressPercentage(exerciseID : Int) : UserProgressPercentageDto
-
 }

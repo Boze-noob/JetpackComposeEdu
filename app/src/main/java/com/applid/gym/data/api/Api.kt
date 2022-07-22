@@ -4,7 +4,10 @@ import com.applid.gym.data.api.dto.UserDto
 import com.applid.gym.data.api.dto.home.BasicInfoDto
 import com.applid.gym.data.api.dto.home.DiscoverWorkoutDto
 import com.applid.gym.data.api.dto.home.UserProgressPercentageDto
+import com.applid.gym.domain.models.sign_up.SignUpModel
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface Api {
@@ -20,4 +23,7 @@ interface Api {
 
     @GET("home/get/userProgress/{exerciseID}")
     suspend fun getUserProgressPercentage(@Path("exerciseID") exerciseID : Int) : UserProgressPercentageDto
+
+    @POST("user/post/signUp")
+    suspend fun postSignUp(@Body signUpModel : SignUpModel) : SignUpModel
 }

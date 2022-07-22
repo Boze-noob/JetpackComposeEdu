@@ -6,6 +6,7 @@ import com.applid.gym.domain.models.common.WebImageModel
 data class UserDto(
     val ID: Int,
     val username: String,
+    val email: String,
     val weight: Int,
     val address: String,
     val exerciseId: Int? = null,
