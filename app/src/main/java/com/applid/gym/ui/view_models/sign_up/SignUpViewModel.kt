@@ -1,4 +1,4 @@
-package com.applid.gym.ui.view_models.signUp
+package com.applid.gym.ui.view_models.sign_up
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.applid.gym.common.Resource
 import com.applid.gym.domain.models.sign_up.SignUpModel
-import com.applid.gym.domain.use_cases.common.SignUpUserUseCase
+import com.applid.gym.domain.use_cases.sign_up.SignUpUserUseCase
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject

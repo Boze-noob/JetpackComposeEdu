@@ -4,6 +4,7 @@ import com.applid.gym.data.api.dto.UserDto
 import com.applid.gym.data.api.dto.home.BasicInfoDto
 import com.applid.gym.data.api.dto.home.DiscoverWorkoutDto
 import com.applid.gym.data.api.dto.home.UserProgressPercentageDto
+import com.applid.gym.domain.models.sign_in.SignInModel
 import com.applid.gym.domain.models.sign_up.SignUpModel
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -26,4 +27,7 @@ interface Api {
 
     @POST("user/post/signUp")
     suspend fun postSignUp(@Body signUpModel : SignUpModel) : SignUpModel
+
+    @POST("user/post/signIn")
+    suspend fun postSignIn(@Body signInModel : SignInModel) : SignInModel
 }

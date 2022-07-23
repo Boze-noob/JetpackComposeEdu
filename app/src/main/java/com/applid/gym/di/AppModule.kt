@@ -3,8 +3,10 @@ package com.applid.gym.di
 import com.applid.gym.common.Constants
 import com.applid.gym.data.api.Api
 import com.applid.gym.data.repositories.HomeRepositoryImpl
+import com.applid.gym.data.repositories.SignInRepositoryImpl
 import com.applid.gym.data.repositories.SignUpRepositoryImpl
 import com.applid.gym.domain.repositories.HomeRepository
+import com.applid.gym.domain.repositories.SignInRepository
 import com.applid.gym.domain.repositories.SignUpRepository
 import dagger.Module
 import dagger.Provides
@@ -33,6 +35,12 @@ object AppModule {
     @Singleton
     fun provideSignUpRepository(api: Api) : SignUpRepository {
         return SignUpRepositoryImpl(api = api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSignInRepository(api: Api) : SignInRepository {
+        return SignInRepositoryImpl(api = api)
     }
 
     @Provides

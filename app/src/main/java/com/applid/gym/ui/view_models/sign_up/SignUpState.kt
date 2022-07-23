@@ -1,4 +1,4 @@
-package com.applid.gym.ui.view_models.signUp
+package com.applid.gym.ui.view_models.sign_up
 
 import com.applid.gym.domain.models.sign_up.SignUpModel
 

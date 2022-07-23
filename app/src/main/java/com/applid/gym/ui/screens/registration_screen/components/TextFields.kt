@@ -17,8 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.applid.gym.R
 import com.applid.gym.ui.common.ButtonWithIcon
-import com.applid.gym.ui.view_models.signUp.SignUpEvent
-import com.applid.gym.ui.view_models.signUp.SignUpViewModel
+import com.applid.gym.ui.view_models.sign_up.SignUpEvent
+import com.applid.gym.ui.view_models.sign_up.SignUpViewModel
 
 @Composable
 fun TextFields(

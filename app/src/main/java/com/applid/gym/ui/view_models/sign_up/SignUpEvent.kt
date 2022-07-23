@@ -1,6 +1,4 @@
-package com.applid.gym.ui.view_models.signUp
-
-import com.applid.gym.domain.models.sign_up.SignUpModel
+package com.applid.gym.ui.view_models.sign_up
 
 sealed class SignUpEvent {
     object SignUp : SignUpEvent()

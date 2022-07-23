@@ -1,4 +1,4 @@
-package com.applid.gym.domain.use_cases.common
+package com.applid.gym.domain.use_cases.sign_up
 
 import com.applid.gym.common.Resource
 import com.applid.gym.domain.models.sign_up.SignUpModel
