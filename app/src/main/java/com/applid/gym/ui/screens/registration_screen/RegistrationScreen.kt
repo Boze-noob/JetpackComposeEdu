@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.applid.gym.ui.common.GetSnackBar
 import com.applid.gym.ui.helpers.ScreenSize
 import com.applid.gym.ui.screens.registration_screen.components.AppBar
 import com.applid.gym.ui.screens.registration_screen.components.TextFields
@@ -44,14 +45,22 @@ fun Body(
         viewModel.uiEvent.collect {
             event ->
             when(event) {
-                is UiEvent.ShowSnackBar ->
+                is UiEvent.ShowSnackBar -> {
                     scaffoldState.snackbarHostState.showSnackbar(
-                    message = event.message,
-                )
+                        message = event.message,
+                    )
+                }
+
             }
         }
     }
     Scaffold(
+        scaffoldState = scaffoldState,
+        snackbarHost = {
+            SnackbarHost(it) { data ->
+                GetSnackBar(data = data)
+            }
+        },
         bottomBar = { BottomAppBar() {
             Row(
                 horizontalArrangement = Arrangement.Center,
