@@ -1,6 +1,5 @@
 package com.applid.gym.ui.screens.registration_screen.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -13,22 +12,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.applid.gym.R
 import com.applid.gym.ui.common.ButtonWithIcon
+import com.applid.gym.ui.view_models.signUp.SignUpEvent
+import com.applid.gym.ui.view_models.signUp.SignUpViewModel
 
 @Composable
-fun TextFields() {
+fun TextFields(
+    viewModel: SignUpViewModel = hiltViewModel()
+) {
     Column {
-        UserNameTextField()
+        UserNameTextField(viewModel = viewModel)
         Spacer(modifier = Modifier.height(10.dp))
-        EmailTextField()
+        EmailTextField(viewModel = viewModel)
         Spacer(modifier = Modifier.height(10.dp))
-        PasswordTextField()
+        PasswordTextField(viewModel = viewModel)
         Spacer(modifier = Modifier.height(10.dp))
-        RepeatPasswordTextField()
+        RepeatPasswordTextField(viewModel = viewModel)
         Spacer(modifier = Modifier.height(5.dp))
 
         Column(
@@ -40,7 +43,9 @@ fun TextFields() {
             Spacer(modifier = Modifier.height(15.dp))
             ButtonWithIcon(
                 btnTxt = "SIGN UP",
-                onClickCallback = { },
+                onClickCallback = {
+                    viewModel.onEvent(SignUpEvent.SignUp)
+                },
                 modifier = Modifier.padding(horizontal = 15.dp, vertical = 7.dp),
             )
         }
@@ -61,15 +66,14 @@ fun getColors() : TextFieldColors {
 }
 
 @Composable
-fun PasswordTextField(){
-    var passwordText by remember { mutableStateOf(TextFieldValue("")) }
+fun PasswordTextField(viewModel: SignUpViewModel){
     var passwordVisible by rememberSaveable { mutableStateOf(false) }
 
     TextField(
-        value = passwordText,
+        value = viewModel.password,
         label = { Text(text = "Password") },
         onValueChange = { it ->
-            passwordText = it
+            viewModel.onEvent(SignUpEvent.OnPasswordChange(it))
         },
         leadingIcon = { Icon(painter = painterResource(id = R.drawable.password_field_icon), contentDescription = "") },
         placeholder = { Text(text = "Enter your password") },
@@ -86,15 +90,13 @@ fun PasswordTextField(){
 }
 
 @Composable
-fun RepeatPasswordTextField(){
-    var repeatPasswordText by remember { mutableStateOf(TextFieldValue("")) }
+fun RepeatPasswordTextField(viewModel: SignUpViewModel){
     var repeatPasswordVisible by rememberSaveable { mutableStateOf(false) }
-
     TextField(
-        value = repeatPasswordText,
+        value = viewModel.confirmPassword,
         label = { Text(text = "Confirm password") },
         onValueChange = { it ->
-            repeatPasswordText = it
+            viewModel.onEvent(SignUpEvent.OnConfirmPasswordChange(it))
         },
         leadingIcon = { Icon(painter = painterResource(id = R.drawable.password_field_icon), contentDescription = "") },
         placeholder = { Text(text = "Enter your password") },
@@ -111,13 +113,12 @@ fun RepeatPasswordTextField(){
 }
 
 @Composable
-fun UserNameTextField(){
-    var userNameText by remember { mutableStateOf(TextFieldValue("")) }
+fun UserNameTextField(viewModel: SignUpViewModel){
     TextField(
-        value = userNameText,
+        value = viewModel.username,
         label = { Text(text = "Full name") },
         onValueChange = { it ->
-            userNameText = it
+            viewModel.onEvent(SignUpEvent.OnUsernameChange(it))
         },
         leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "emailIcon") },
         placeholder = { Text(text = "Enter your full name") },
@@ -127,13 +128,12 @@ fun UserNameTextField(){
 }
 
 @Composable
-fun EmailTextField(){
-    var emailText by remember { mutableStateOf(TextFieldValue("")) }
+fun EmailTextField(viewModel: SignUpViewModel){
     TextField(
-        value = emailText,
+        value = viewModel.email,
         label = { Text(text = "E-mail") },
         onValueChange = { it ->
-            emailText = it
+            viewModel.onEvent(SignUpEvent.OnEmailChange(it))
         },
         leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "emailIcon") },
         placeholder = { Text(text = "Enter your e-mail") },
