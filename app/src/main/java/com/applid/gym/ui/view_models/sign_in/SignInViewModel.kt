@@ -9,7 +9,6 @@ import androidx.lifecycle.viewModelScope
 import com.applid.gym.common.Resource
 import com.applid.gym.domain.models.sign_in.SignInModel
 import com.applid.gym.domain.use_cases.sign_in.SignInUserUseCase
-import com.applid.gym.ui.view_models.sign_up.SignUpState
 import com.applid.gym.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -42,8 +41,8 @@ class SignInViewModel @Inject constructor(
                         ))
                         return@launch
                     }
+                    signIn(SignInModel(email = email, password = password))
                 }
-                signIn(SignInModel(email = email, password = password))
             }
             is SignInEvent.OnEmailChange -> {
                 email = event.email
@@ -64,9 +63,16 @@ class SignInViewModel @Inject constructor(
                     _state.value = SignInState(signInModel = signInModel)
                 }
                 is Resource.Error -> {
+                    val errorMessage = result.message ?: "An unexpected error happen"
                     _state.value = SignInState(
-                        error = result.message ?: "An unexpected error happen"
+                        error = errorMessage
                     )
+                    viewModelScope.launch {
+                        sendUiEvent(UiEvent.ShowSnackBar(
+                            message = errorMessage
+                        ))
+                        return@launch
+                    }
                 }
                 is Resource.Loading -> {
                     _state.value = SignInState(isLoading = true)

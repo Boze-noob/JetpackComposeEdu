@@ -28,6 +28,6 @@ interface Api {
     @POST("user/post/signUp")
     suspend fun postSignUp(@Body signUpModel : SignUpModel) : SignUpModel
 
-    @POST("user/post/signIn")
+    @POST("user/post/login")
     suspend fun postSignIn(@Body signInModel : SignInModel) : SignInModel
 }

@@ -15,13 +15,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.applid.gym.ui.common.ButtonWithRoundCornerShape
+import com.applid.gym.ui.common.GetSnackBar
 import com.applid.gym.ui.helpers.ScreenSize
 import com.applid.gym.ui.screens.login_screen.components.AppBar
 import com.applid.gym.ui.screens.login_screen.components.TextFields
 import com.applid.gym.ui.theme.GymTheme
 import com.applid.gym.ui.view_models.sign_in.SignInViewModel
 import com.applid.gym.util.UiEvent
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.math.log
 
+@AndroidEntryPoint
 class LoginScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +57,12 @@ fun Body(
         }
     }
     Scaffold(
+        scaffoldState = scaffoldState,
+        snackbarHost = {
+            SnackbarHost(it) { data ->
+                GetSnackBar(data = data)
+            }
+        },
         bottomBar = { BottomAppBar() {
             Row(
                 horizontalArrangement = Arrangement.Center,

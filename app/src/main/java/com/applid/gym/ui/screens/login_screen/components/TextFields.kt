@@ -15,21 +15,24 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.applid.gym.R
 import com.applid.gym.ui.common.ButtonWithIcon
+import com.applid.gym.ui.view_models.sign_in.SignInEvent
+import com.applid.gym.ui.view_models.sign_in.SignInViewModel
 
 @Composable
-fun TextFields() {
-    var emailText by remember { mutableStateOf(TextFieldValue("")) }
-    var passwordText by remember { mutableStateOf(TextFieldValue("")) }
+fun TextFields(
+    viewModel: SignInViewModel = hiltViewModel()
+) {
     var passwordVisible by rememberSaveable { mutableStateOf(false) }
 
     Column() {
         TextField(
-            value = emailText,
+            value = viewModel.email,
             label = { Text(text = "E-mail") },
             onValueChange = { it ->
-                emailText = it
+                viewModel.onEvent(SignInEvent.OnEmailChange(it))
             },
             leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "emailIcon") },
             placeholder = { Text(text = "Enter your e-mail") },
@@ -38,10 +41,10 @@ fun TextFields() {
         )
         Spacer(modifier = Modifier.height(10.dp))
         TextField(
-            value = passwordText,
+            value = viewModel.password,
             label = { Text(text = "Password") },
             onValueChange = { it ->
-                passwordText = it
+                viewModel.onEvent(SignInEvent.OnPasswordChange(it))
             },
             leadingIcon = { Icon(painter = painterResource(id = R.drawable.password_field_icon), contentDescription = "") },
             placeholder = { Text(text = "Enter your password") },
@@ -70,7 +73,9 @@ fun TextFields() {
             Spacer(modifier = Modifier.height(15.dp))
             ButtonWithIcon(
                 btnTxt = "LOGIN",
-                onClickCallback = { },
+                onClickCallback = {
+                    viewModel.onEvent(SignInEvent.SignIn)
+                },
                 modifier = Modifier.padding(horizontal = 15.dp, vertical = 7.dp),
                 )
         }

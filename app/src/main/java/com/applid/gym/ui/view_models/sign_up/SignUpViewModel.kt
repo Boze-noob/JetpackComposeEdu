@@ -38,7 +38,7 @@ class SignUpViewModel @Inject constructor(
         when (event) {
             is SignUpEvent.SignUp -> {
                 viewModelScope.launch {
-                    if(username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                    if(username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || email.isEmpty()) {
                         sendUiEvent(UiEvent.ShowSnackBar(
                             message = "Please fill all fields!"
                         ))
