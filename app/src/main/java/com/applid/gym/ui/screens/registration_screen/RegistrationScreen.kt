@@ -1,8 +1,6 @@
 package com.applid.gym.ui.screens.registration_screen
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -18,25 +16,12 @@ import com.applid.gym.ui.common.GetSnackBar
 import com.applid.gym.ui.helpers.ScreenSize
 import com.applid.gym.ui.screens.registration_screen.components.AppBar
 import com.applid.gym.ui.screens.registration_screen.components.TextFields
-import com.applid.gym.ui.theme.GymTheme
 import com.applid.gym.ui.view_models.sign_up.SignUpViewModel
 import com.applid.gym.util.UiEvent
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class RegistrationScreen : ComponentActivity() {
-    override fun onCreate(savedInstanceState : Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent() {
-            GymTheme() {
-                Body()
-            }
-        }
-    }
-}
 
 @Composable
-fun Body(
+fun RegistrationScreen(
     viewModel: SignUpViewModel = hiltViewModel()
 ) {
     val screenHeight = ScreenSize(LocalContext.current).getScreenHeight()
