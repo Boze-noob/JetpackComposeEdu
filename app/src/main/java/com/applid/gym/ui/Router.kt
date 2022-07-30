@@ -12,5 +12,6 @@ sealed class Router(val route : String) {
     object SettingsScreen : Router("settings")
     object ProfileScreen : Router("profile")
     object QrScanScreen : Router("qrscan")
+    object LoginScreen : Router("login")
 
 }

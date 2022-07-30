@@ -66,7 +66,7 @@ class SignInViewModel @Inject constructor(
         signInUserUseCase(signInModel = signInModel).onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _state.value = SignInState(signInModel = signInModel)
+                    _state.value = SignInState(signInModel = result.data)
                     storeJWT(jwt = _state.value.signInModel?.token!!)
                 }
                 is Resource.Error -> {
@@ -90,20 +90,11 @@ class SignInViewModel @Inject constructor(
 
     private fun storeJWT(jwt : String) {
         val key = stringPreferencesKey(Constants.DATASTORE_JWT)
-        viewModelScope.launch {
             postJWTUseCase(jwt = jwt, key = key).onEach { result ->
                 if (result is Resource.Error) {
                  storeJWT(jwt)
-                } else {
-                    getJWTUseCase(key = key).onEach {
-                        if(it is Resource.Success) {
-                            println("This is your jwt from data store--------")
-                            println(it.data)
-                        }
-                    }
                 }
-            }
-        }
+            }.launchIn(viewModelScope)
     }
 
     private fun sendUiEvent(event: UiEvent) {

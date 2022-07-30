@@ -13,8 +13,9 @@ class GetJWTUseCase @Inject constructor(
 ){
     operator fun invoke(key : Preferences.Key<String>) : Flow<Resource<String>> = flow {
         try {
-           val result = dataStoreRepository.getStringData(key = key)
-            emit(Resource.Success<String>(result.last()))
+           dataStoreRepository.getStringData(key = key).collect{
+               emit(Resource.Success<String>(it))
+           }
         } catch (e : Error) {
             emit(Resource.Error<String>(message = e.localizedMessage ?: "Error happen while storing jwt"))
         }

@@ -26,6 +26,7 @@ import com.applid.gym.ui.Router
 import com.applid.gym.ui.common.BottomNavItem
 import com.applid.gym.ui.screens.home_screen.HomeScreen
 import com.applid.gym.ui.screens.leaderboard_screen.LeaderboardScreen
+import com.applid.gym.ui.screens.login_screen.LoginScreen
 import com.applid.gym.ui.screens.profile_screen.ProfileScreen
 import com.applid.gym.ui.screens.qr_scan_screen.QrScanScreen
 import com.applid.gym.ui.screens.settings_screen.SettingsScreen
@@ -101,6 +102,9 @@ fun Navigation(navController: NavHostController) {
         }
         composable(Router.QrScanScreen.route) {
             QrScanScreen(navController)
+        }
+        composable(Router.LoginScreen.route) {
+            LoginScreen()
         }
     }
 }
