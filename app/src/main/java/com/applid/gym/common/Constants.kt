@@ -5,6 +5,8 @@ object Constants {
     const val BASE_URL = "http://192.168.0.108:5000/api/"
     const val IMAGE_BASE_URL = "http://192.168.0.108:5000/"
 
+    const val DATASTORE_NAME = "dataStoreName"
+    const val DATASTORE_JWT = "dataStoreJWT"
 
     //TODO consts for viewModels
     const val PARAM_USER_ID = "userID"
